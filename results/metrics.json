@@ -1,0 +1,305 @@
+{
+  "seed": 42,
+  "database": "PhysioNet AFDB",
+  "split_records": {
+    "train": [
+      "04015",
+      "04043",
+      "04048",
+      "04126"
+    ],
+    "validation": [
+      "04746",
+      "04908"
+    ],
+    "test": [
+      "05121",
+      "05261"
+    ]
+  },
+  "beats_per_window": 30,
+  "rr_intervals_per_window": 29,
+  "features": [
+    "mean_rr_s",
+    "sdnn_rr_s",
+    "rmssd_s",
+    "pnn50",
+    "rr_cv",
+    "median_abs_successive_rr_diff_s",
+    "rr_histogram_entropy_bits",
+    "min_rr_s",
+    "max_rr_s"
+  ],
+  "target_specificity": 0.9,
+  "confusion_matrix_order": {
+    "rows": [
+      "true_non_afib",
+      "true_afib"
+    ],
+    "columns": [
+      "predicted_non_afib",
+      "predicted_afib"
+    ]
+  },
+  "record_audit": [
+    {
+      "record": "04015",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 44005,
+      "candidate_windows": 1466,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 11,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 25,
+      "retained_windows": 1455,
+      "afib_windows": 14,
+      "non_afib_windows": 1441,
+      "split": "train"
+    },
+    {
+      "record": "04043",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 61915,
+      "candidate_windows": 2063,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 162,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 25,
+      "retained_windows": 1901,
+      "afib_windows": 409,
+      "non_afib_windows": 1492,
+      "split": "train"
+    },
+    {
+      "record": "04048",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 39934,
+      "candidate_windows": 1331,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 13,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 4,
+      "retained_windows": 1318,
+      "afib_windows": 20,
+      "non_afib_windows": 1298,
+      "split": "train"
+    },
+    {
+      "record": "04126",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 42860,
+      "candidate_windows": 1428,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 13,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 20,
+      "retained_windows": 1415,
+      "afib_windows": 104,
+      "non_afib_windows": 1311,
+      "split": "train"
+    },
+    {
+      "record": "04746",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 47873,
+      "candidate_windows": 1595,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 8,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 23,
+      "retained_windows": 1587,
+      "afib_windows": 1026,
+      "non_afib_windows": 561,
+      "split": "validation"
+    },
+    {
+      "record": "04908",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 61760,
+      "candidate_windows": 2058,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 15,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 20,
+      "retained_windows": 2043,
+      "afib_windows": 184,
+      "non_afib_windows": 1859,
+      "split": "validation"
+    },
+    {
+      "record": "05121",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 49881,
+      "candidate_windows": 1662,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 36,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 21,
+      "retained_windows": 1626,
+      "afib_windows": 1106,
+      "non_afib_windows": 520,
+      "split": "test"
+    },
+    {
+      "record": "05261",
+      "sampling_frequency_hz": 250.0,
+      "beat_annotation_extension": "qrs",
+      "beat_count": 45534,
+      "candidate_windows": 1517,
+      "dropped_unknown_rhythm": 0,
+      "dropped_mixed_rhythm": 19,
+      "dropped_invalid_rr": 0,
+      "unused_trailing_beats": 24,
+      "retained_windows": 1498,
+      "afib_windows": 24,
+      "non_afib_windows": 1474,
+      "split": "test"
+    }
+  ],
+  "versions": {
+    "python": "3.12.3",
+    "wfdb": "4.3.1",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "matplotlib": "3.11.2"
+  },
+  "models": {
+    "logistic_regression": {
+      "test_auroc": 0.9714395398585136,
+      "test_at_threshold_0_5": {
+        "threshold": 0.5,
+        "sensitivity": 0.38672566371681416,
+        "specificity": 0.9839518555667001,
+        "confusion_matrix": [
+          [
+            1962,
+            32
+          ],
+          [
+            693,
+            437
+          ]
+        ],
+        "tn": 1962,
+        "fp": 32,
+        "fn": 693,
+        "tp": 437
+      },
+      "validation_operating_point": {
+        "threshold": 0.03298084372715938,
+        "sensitivity": 0.9743801652892562,
+        "specificity": 0.9016528925619834
+      },
+      "test_at_validation_selected_threshold": {
+        "threshold": 0.03298084372715938,
+        "sensitivity": 0.9176991150442478,
+        "specificity": 0.9453360080240722,
+        "confusion_matrix": [
+          [
+            1885,
+            109
+          ],
+          [
+            93,
+            1037
+          ]
+        ],
+        "tn": 1885,
+        "fp": 109,
+        "fn": 93,
+        "tp": 1037
+      },
+      "test_sensitivity_at_90_specificity_descriptive": {
+        "sensitivity": 0.968141592920354,
+        "achieved_specificity": 0.9007021063189569,
+        "note": "Empirical test ROC summary at specificity >= 0.90; not an independently validated operating threshold."
+      },
+      "interpretation": {
+        "standardized_coefficients": {
+          "mean_rr_s": -6.3687259452743685,
+          "sdnn_rr_s": -2.528368797073594,
+          "rmssd_s": 2.343156352499255,
+          "pnn50": 2.7593446060047295,
+          "rr_cv": -1.615938571162487,
+          "median_abs_successive_rr_diff_s": -0.9127903272014247,
+          "rr_histogram_entropy_bits": 1.3221344348936015,
+          "min_rr_s": 0.7032114974794492,
+          "max_rr_s": 1.4174384415350687
+        },
+        "intercept": -9.17808954342388
+      }
+    },
+    "random_forest": {
+      "test_auroc": 0.9545310710893743,
+      "test_at_threshold_0_5": {
+        "threshold": 0.5,
+        "sensitivity": 0.06017699115044248,
+        "specificity": 0.9944834503510531,
+        "confusion_matrix": [
+          [
+            1983,
+            11
+          ],
+          [
+            1062,
+            68
+          ]
+        ],
+        "tn": 1983,
+        "fp": 11,
+        "fn": 1062,
+        "tp": 68
+      },
+      "validation_operating_point": {
+        "threshold": 0.04976969392842657,
+        "sensitivity": 0.9925619834710744,
+        "specificity": 0.9037190082644628
+      },
+      "test_at_validation_selected_threshold": {
+        "threshold": 0.04976969392842657,
+        "sensitivity": 0.9433628318584071,
+        "specificity": 0.9072216649949849,
+        "confusion_matrix": [
+          [
+            1809,
+            185
+          ],
+          [
+            64,
+            1066
+          ]
+        ],
+        "tn": 1809,
+        "fp": 185,
+        "fn": 64,
+        "tp": 1066
+      },
+      "test_sensitivity_at_90_specificity_descriptive": {
+        "sensitivity": 0.9486725663716814,
+        "achieved_specificity": 0.9002006018054163,
+        "note": "Empirical test ROC summary at specificity >= 0.90; not an independently validated operating threshold."
+      },
+      "interpretation": {
+        "impurity_feature_importances": {
+          "mean_rr_s": 0.41435206098567134,
+          "sdnn_rr_s": 0.04884266820265206,
+          "rmssd_s": 0.02577386433070396,
+          "pnn50": 0.09637093068995099,
+          "rr_cv": 0.05335904399491733,
+          "median_abs_successive_rr_diff_s": 0.1130696523653725,
+          "rr_histogram_entropy_bits": 0.03260767786248118,
+          "min_rr_s": 0.1781424799218004,
+          "max_rr_s": 0.037481621646450386
+        }
+      }
+    }
+  }
+}
