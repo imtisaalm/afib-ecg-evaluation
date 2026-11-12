@@ -13,6 +13,17 @@ Smartwatch screening makes the tradeoff between missed episodes and false
 alarms especially relevant. This is a first exercise in learning that
 tradeoff properly, with explicit labels and evaluation on unseen records.
 
+## Results at a glance
+
+Test set, with thresholds chosen on validation records and then locked:
+
+| Model | Test AUROC | Locked threshold | Test sensitivity | Test specificity |
+| --- | --- | --- | --- | --- |
+| Logistic regression | 0.971 | 0.0330 | 0.918 | 0.945 |
+| Random forest | 0.955 | 0.0498 | 0.943 | 0.907 |
+
+Full tables and the reading guide are in Results below.
+
 ## Run in about five minutes
 
 Use Python 3.10 or newer. Save the files in this structure:
@@ -194,6 +205,10 @@ selected using test performance.
   A negative prediction cannot rule out AF.
 - Results are not comparable to published deep-learning results without
   identical cohorts, labels, exclusions, splits and endpoints.
+
+## The same pattern in risk decisions
+
+The evaluation discipline here transfers directly to risk decisions such as credit or renter underwriting. The features are interpretable, the operating threshold is chosen on validation data and locked before test scoring, and the reported tradeoff is sensitivity against specificity at that locked threshold rather than a threshold picked on test data. A model that approves more applicants is only better if the loss rate it implies stays within bounds, so the approval rate and the miss rate have to be reported together. That is the same tradeoff as missed episodes against false alarms in screening.
 
 ## Next steps
 
