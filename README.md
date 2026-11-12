@@ -13,6 +13,14 @@ Smartwatch screening makes the tradeoff between missed episodes and false
 alarms especially relevant. This is a first exercise in learning that
 tradeoff properly, with explicit labels and evaluation on unseen records.
 
+## Why this evaluation discipline matters
+
+The method here is the point: nine interpretable features, thresholds chosen on validation records and then locked before test scoring, and results reported as sensitivity and specificity at that locked threshold. The tradeoff is explicit. A lower threshold catches more episodes and raises more false alarms.
+
+The same discipline applies to any risk decision where both kinds of error cost something: approving a renter who defaults, or declining a renter who would have paid. What transfers is the method, not the number. The 0.971 test AUROC is a result for atrial fibrillation screening on this task only. It says nothing about renter default prediction.
+
+The skills it shows are interpretable feature engineering, locked-threshold evaluation, and error analysis on held-out data.
+
 ## Results at a glance
 
 Test set, with thresholds chosen on validation records and then locked:
